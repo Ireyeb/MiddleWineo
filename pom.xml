@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.doranco.wineo</groupId>
-	<artifactId>Middleware</artifactId>
+	<artifactId>middleware</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>ejb</packaging>
 	<name>Middleware</name>
@@ -20,13 +20,18 @@
 			<version>${version.javaee}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
- 	 		<artifactId>commons-lang3</artifactId>
-  			<version>3.4</version>
-  		</dependency>
-		
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0</version>
+		</dependency>
 
 	</dependencies>
 

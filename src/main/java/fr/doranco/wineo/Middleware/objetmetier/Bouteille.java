@@ -1,5 +1,7 @@
-package fr.doranco.wineo.Middleware.objetmetier;
+package fr.doranco.wineo.middleware.objetmetier;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Bouteille {
@@ -8,7 +10,26 @@ public class Bouteille {
 	private Double contenance;
 	private String designation;
 	private Integer annee;
-	private Recompense recompense;
+	private Recompenses recompense;
+	
+	//Constructeurs
+	
+	public Bouteille() {
+		super();
+	}
+
+
+	public Bouteille(String reference, Double contenance, String designation, Integer annee, Recompenses recompense) {
+		super();
+		this.reference = reference;
+		this.contenance = contenance;
+		this.designation = designation;
+		this.annee = annee;
+		this.recompense = recompense;
+	}
+	
+	
+	//Getter Setter
 	
 	public String getReference() {
 		return reference;
@@ -42,17 +63,16 @@ public class Bouteille {
 		this.annee = année;
 	}
 
-	/*public Recompense getRecompense() {
+	public Recompenses getRecompense() {
 		return recompense;
 	}
 
-	public void setRecompense(Recompense recompense) {
+	public void setRecompense(Recompenses recompense) {
 		this.recompense = recompense;
-	}*/
+	}
 	
 	
-
-	
+	//ToString HashCode Equals
 
 	@Override
 	public String toString() {
@@ -67,53 +87,32 @@ public class Bouteille {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((annee == null) ? 0 : annee.hashCode());
-		result = prime * result + ((contenance == null) ? 0 : contenance.hashCode());
-		result = prime * result + ((designation == null) ? 0 : designation.hashCode());
-		result = prime * result + ((recompense == null) ? 0 : recompense.hashCode());
-		result = prime * result + ((reference == null) ? 0 : reference.hashCode());
-		return result;
+		return new HashCodeBuilder()
+				.append(this.annee)
+				.append(this.contenance)
+				.append(this.designation)
+				.append(this.recompense)
+				.append(this.reference)
+				.build();
 	}
-
-	
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Bouteille other = (Bouteille) obj;
-		if (annee == null) {
-			if (other.annee != null)
-				return false;
-		} else if (!annee.equals(other.annee))
-			return false;
-		if (contenance == null) {
-			if (other.contenance != null)
-				return false;
-		} else if (!contenance.equals(other.contenance))
-			return false;
-		if (designation == null) {
-			if (other.designation != null)
-				return false;
-		} else if (!designation.equals(other.designation))
-			return false;
-		if (recompense == null) {
-			if (other.recompense != null)
-				return false;
-		} else if (!recompense.equals(other.recompense))
-			return false;
-		if (reference == null) {
-			if (other.reference != null)
-				return false;
-		} else if (!reference.equals(other.reference))
-			return false;
-		return true;
+		
+		if (this == obj)
+			return true;
+		
+		Bouteille autre = (Bouteille) obj;
+		
+		return new EqualsBuilder()
+				.append(this.annee, autre.annee)
+				.append(this.contenance, autre.contenance)
+				.append(this.designation, autre.designation)
+				.append(this.recompense, autre.recompense)
+				.append(this.reference, autre.reference)
+				.build();
 	}
 	
 }
